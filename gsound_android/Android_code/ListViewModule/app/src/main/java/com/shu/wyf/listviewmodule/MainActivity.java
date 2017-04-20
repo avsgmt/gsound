@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             ItemInfo itemInfo = new ItemInfo();
             itemInfo.name =  "松涛路563号A座"+i+"室";
             itemInfo.age = "上海"+i+"数字技术有限公司";
-            itemInfo.sex = i%2==0?"男":"女";
+            itemInfo.count = i;
             itemInfo.telnumber = "021-58326420";
             itemInfo.url = "www."+i+"baidu.com";
             datalist.add(itemInfo );
@@ -71,10 +71,14 @@ public class MainActivity extends AppCompatActivity {
             tvUrl.setText(datalist.get(i).url);
 
             ImageView imageViewCompany = (ImageView) itemRootView.findViewById(R.id.iv_item);
-            if(datalist.get(i).sex.equals("男")){
-                imageViewCompany.setBackgroundResource(R.drawable.a);
-            }else if(datalist.get(i).sex.equals("女")){
-                imageViewCompany.setBackgroundResource(R.drawable.b);
+            if(datalist.get(i).count%4==0){
+                imageViewCompany.setBackgroundResource(R.drawable.gmt);
+            }else if(datalist.get(i).count%4==1){
+                imageViewCompany.setBackgroundResource(R.drawable.anewpharm);
+            }else if(datalist.get(i).count%4==2){
+                imageViewCompany.setBackgroundResource(R.drawable.baibei);
+            }else if(datalist.get(i).count%4==3){
+                imageViewCompany.setBackgroundResource(R.drawable.cloud);
             }
 
 
@@ -85,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     class ItemInfo{
         String name;
         String age;
-        String sex;
+        int count;
         String telnumber;
         String url;
     }

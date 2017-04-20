@@ -10,8 +10,8 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_margin="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,7 +64,7 @@
                 <ImageView
                     android:layout_width="14dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/a" />
+                    android:src="@drawable/tel" />
                 <TextView
                     android:id="@+id/tv_telnumber"
                     android:layout_width="match_parent"
