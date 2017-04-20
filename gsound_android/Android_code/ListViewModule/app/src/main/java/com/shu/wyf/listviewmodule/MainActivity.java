@@ -1,4 +1,4 @@
-package com.shu.wyf.listviewmoudoule;
+package com.shu.wyf.listviewmodule;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,10 +25,11 @@ public class MainActivity extends AppCompatActivity {
         datalist = new ArrayList<>();
         for (int i = 0; i <50; i++) {
             ItemInfo itemInfo = new ItemInfo();
-            itemInfo.name =  "张三"+i;
-            itemInfo.age = 10+i;
+            itemInfo.name =  "松涛路563号A座"+i+"室";
+            itemInfo.age = "上海"+i+"数字技术有限公司";
             itemInfo.sex = i%2==0?"男":"女";
-            itemInfo.url = "www."+i+".com";
+            itemInfo.telnumber = "021-58326420";
+            itemInfo.url = "www."+i+"baidu.com";
             datalist.add(itemInfo );
         }
         InfoListAdapter infoListAdapter = new InfoListAdapter();
@@ -61,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
             tvName.setText(datalist.get(i).name);
 
             TextView tvAge = (TextView) itemRootView.findViewById(R.id.tv_age);
-            tvAge.setText(datalist.get(i).age+"");
+            tvAge.setText(datalist.get(i).age);
 
-            TextView tvSex = (TextView) itemRootView.findViewById(R.id.tv_sex);
-            tvSex.setText(datalist.get(i).sex);
+            TextView tvTelnumber = (TextView) itemRootView.findViewById(R.id.tv_telnumber);
+            tvTelnumber.setText(datalist.get(i).telnumber);
 
             TextView tvUrl = (TextView) itemRootView.findViewById(R.id.tv_url);
             tvUrl.setText(datalist.get(i).url);
@@ -83,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
 
     class ItemInfo{
         String name;
-        int age;
+        String age;
         String sex;
+        String telnumber;
         String url;
     }
 }

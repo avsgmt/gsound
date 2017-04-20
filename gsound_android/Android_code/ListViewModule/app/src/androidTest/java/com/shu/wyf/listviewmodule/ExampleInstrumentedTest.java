@@ -1,4 +1,4 @@
-package com.shu.wyf.listviewmoudoule;
+package com.shu.wyf.listviewmodule;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
