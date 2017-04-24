@@ -26,12 +26,12 @@ public class PostUtilClass {
             @Override
             public void run() {
 //                final String postUrl = "http://123.206.206.42:8090/ShuVoice/index.php/Home/GetValue/index?key="+data;
-                final String postUrl = "http://www.weather.com.cn/data/sk/101010100.html";
+                final String postUrl = "http://123.206.206.42:8090/ShuVoice/GMT.php";
                 final FormBody formBody = new FormBody.Builder()
                         .add("key", data)
                         .build();
-                Request request = new Request.Builder().url(postUrl).build();
-//                Request request = new Request.Builder().url(postUrl).post(formBody).build();
+//                Request request = new Request.Builder().url(postUrl).build();
+                Request request = new Request.Builder().url(postUrl).post(formBody).build();
                 Log.d("test", postUrl);
                 Log.d("test", data);
                 try {

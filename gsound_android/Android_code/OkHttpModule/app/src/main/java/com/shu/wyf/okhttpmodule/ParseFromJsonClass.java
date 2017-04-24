@@ -8,6 +8,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by info_kerwin on 2017/4/23.
  */
@@ -15,7 +18,7 @@ import com.google.gson.JsonSyntaxException;
 public class ParseFromJsonClass {
     private static String web_url=null;
 
-    public String parseFromJson(String jsonData) {
+/*    public String parseFromJson(String jsonData) {
         Log.d("test", "1");
         try {
             Gson gson = new Gson();
@@ -30,27 +33,31 @@ public class ParseFromJsonClass {
             return null;
         }
     }
+*/
 
     public String parseItemInfo(String jsonData) {
         try {
             JsonParser jsonParser = new JsonParser();
             JsonObject object = (JsonObject) jsonParser.parse(jsonData);
-//        Log.d("Gson", object.get("weatherinfo").getAsString());
-//        Log.d("Gson", object.get("url").getAsString());
-//            JsonArray array = object.get("weatherinfo").getAsJsonArray();
-//            for (int i = 0; i < array.size(); i++) {
-//                Log.d("Gson", "-----------------------");
-//                JsonObject subObject = array.get(i).getAsJsonObject();
-//                web_url = subObject.get("city").getAsString();
-//                Log.d("Gson", subObject.get("city").getAsString());
-//                Log.d("Gson", subObject.get("cityid").getAsString());
-//                Log.d("Gson", subObject.get("temp").getAsString());
-//            }
-            JsonObject subObject = object.get("weatherinfo").getAsJsonObject();
-            web_url = subObject.get("city").getAsString();
-            Log.d("Gson", subObject.get("city").getAsString());
-            Log.d("Gson", subObject.get("cityid").getAsString());
-            Log.d("Gson", subObject.get("temp").getAsString());
+        Log.d("Gson", object.get("result").getAsString());
+        Log.d("Gson", object.get("msg").getAsString());
+            JsonArray array = object.get("itemInfo").getAsJsonArray();
+            for (int i = 0; i < array.size(); i++) {
+                Log.d("Gson", "-----------------------");
+                JsonObject subObject = array.get(i).getAsJsonObject();
+                web_url = subObject.get("ID").getAsString();
+                Log.d("Gson", subObject.get("ID").getAsString());
+                Log.d("Gson", subObject.get("LogoUrl").getAsString());
+                Log.d("Gson", subObject.get("CompanyLocation").getAsString());
+                Log.d("Gson", subObject.get("CompanyName").getAsString());
+                Log.d("Gson", subObject.get("CompanyTel").getAsString());
+                Log.d("Gson", subObject.get("CompanyUrl").getAsString());
+            }
+//            JsonObject subObject = object.get("itemInfo").getAsJsonObject();
+//            web_url = subObject.get("city").getAsString();
+//            Log.d("Gson", subObject.get("city").getAsString());
+//            Log.d("Gson", subObject.get("cityid").getAsString());
+//            Log.d("Gson", subObject.get("temp").getAsString());
         } catch (JsonSyntaxException e) {
             e.printStackTrace();
         }
