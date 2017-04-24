@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
                 String jsondata=postUtilClass.doPost("0004",okHttpClient);
                 if (jsondata != null) {
                     ParseFromJsonClass parseFromJsonClass = new ParseFromJsonClass();
-                    String weburl = parseFromJsonClass.parseFromJson(jsondata);
+                    String weburl = parseFromJsonClass.parseItemInfo(jsondata);
                     tv_dis.setText(weburl);
                 }
             }
