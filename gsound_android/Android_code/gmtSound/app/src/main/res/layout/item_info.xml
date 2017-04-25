@@ -76,6 +76,7 @@
 
                 <TextView
                     android:id="@+id/tv_CompanyTel"
+                    android:autoLink="phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -86,6 +87,7 @@
 
             <TextView
                 android:id="@+id/tv_CompanyUrl"
+                android:autoLink="web"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
