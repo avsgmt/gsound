@@ -2,6 +2,7 @@ package com.shu.wyf.gmtsound;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -18,7 +19,20 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         listView = (ListView) findViewById(R.id.listview_1);
-        doShowListView(listView);
+    }
+
+    /*
+    *   网络访问信息应在onResume里面加载
+    * */
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d("wyf", "onResume: test");
+        try {
+            doShowListView(listView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void doShowListView(ListView lv) {
