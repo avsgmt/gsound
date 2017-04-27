@@ -38,26 +38,23 @@ ArrayList<ItemInfo> datalist;
         try {
             JsonParser jsonParser = new JsonParser();
             JsonObject object = (JsonObject) jsonParser.parse(jsonData);
-            Log.d("Gson", object.get("result").getAsString());
-            Log.d("Gson", object.get("msg").getAsString());
-            JsonArray array = object.get("itemInfo").getAsJsonArray();
+            Log.d("Gson", object.get("status").getAsString());
+            JsonArray array = object.get("data").getAsJsonArray();
             for (int i = 0; i < array.size(); i++) {
                 Log.d("Gson", "-----------------------");
                 JsonObject subObject = array.get(i).getAsJsonObject();
                 ItemInfo itemInfo = new ItemInfo();
-                itemInfo.ID =  subObject.get("ID").getAsString();
-                itemInfo.LogoUrl = subObject.get("LogoUrl").getAsString();
-                itemInfo.CompanyLocation = subObject.get("CompanyLocation").getAsString();
-                itemInfo.CompanyName = subObject.get("CompanyName").getAsString();
-                itemInfo.CompanyTel = subObject.get("CompanyTel").getAsString();
-                itemInfo.CompanyUrl = subObject.get("CompanyUrl").getAsString();
+                itemInfo.logo = subObject.get("logo").getAsString();
+                itemInfo.address = subObject.get("address").getAsString();
+                itemInfo.name = subObject.get("name").getAsString();
+                itemInfo.tel = subObject.get("tel").getAsString();
+                itemInfo.webset = subObject.get("webset").getAsString();
                 datalist.add(itemInfo);
-                Log.d("Gson", subObject.get("ID").getAsString());
-                Log.d("Gson", subObject.get("LogoUrl").getAsString());
-                Log.d("Gson", subObject.get("CompanyLocation").getAsString());
-                Log.d("Gson", subObject.get("CompanyName").getAsString());
-                Log.d("Gson", subObject.get("CompanyTel").getAsString());
-                Log.d("Gson", subObject.get("CompanyUrl").getAsString());
+                Log.d("Gson", subObject.get("logo").getAsString());
+                Log.d("Gson", subObject.get("address").getAsString());
+                Log.d("Gson", subObject.get("name").getAsString());
+                Log.d("Gson", subObject.get("tel").getAsString());
+                Log.d("Gson", subObject.get("webset").getAsString());
             }
     //            JsonObject subObject = object.get("itemInfo").getAsJsonObject();
     //            web_url = subObject.get("city").getAsString();

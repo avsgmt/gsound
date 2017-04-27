@@ -22,8 +22,8 @@ public class PostUtilClass {
         new Thread(new Runnable() {
             @Override
             public void run() {
-//                final String postUrl = "http://123.206.206.42:8090/ShuVoice/index.php/Home/GetValue/index?key="+data;
-                final String postUrl = "http://123.206.206.42:8090/ShuVoice/GMT.php";
+                final String postUrl = "http://cv15425558.imwork.net:2501/gsound/buildinfo?id="+data;
+//                final String postUrl = "http://123.206.206.42:8090/ShuVoice/GMT.php";
                 final FormBody formBody = new FormBody.Builder()
                         .add("key", data)
                         .build();

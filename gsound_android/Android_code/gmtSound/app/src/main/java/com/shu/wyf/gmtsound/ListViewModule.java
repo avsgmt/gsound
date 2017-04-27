@@ -50,16 +50,16 @@ public class ListViewModule {
             View itemRootView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_info,null);
 
             TextView tvName = (TextView) itemRootView.findViewById(R.id.tv_CompanyLocation);
-            tvName.setText(datalist.get(i).CompanyLocation);
+            tvName.setText(datalist.get(i).address);
 
             TextView tvAge = (TextView) itemRootView.findViewById(R.id.tv_CompanyName);
-            tvAge.setText(datalist.get(i).CompanyName);
+            tvAge.setText(datalist.get(i).name);
 
             TextView tvTelnumber = (TextView) itemRootView.findViewById(R.id.tv_CompanyTel);
-            tvTelnumber.setText(datalist.get(i).CompanyTel);
+            tvTelnumber.setText(datalist.get(i).tel);
 
             TextView tvUrl = (TextView) itemRootView.findViewById(R.id.tv_CompanyUrl);
-            tvUrl.setText(datalist.get(i).CompanyUrl);
+            tvUrl.setText(datalist.get(i).webset);
 
             imageViewCompany = (SimpleDraweeView) itemRootView.findViewById(R.id.iv_item);
 //            if(datalist.get(i).count%4==0){
@@ -71,7 +71,7 @@ public class ListViewModule {
 //            }else if(datalist.get(i).count%4==3){
 //                imageViewCompany.setBackgroundResource(R.drawable.cloud);
 //            }
-            Uri imageUrl = Uri.parse(datalist.get(i).LogoUrl);
+            Uri imageUrl = Uri.parse(datalist.get(i).logo);
             imageViewCompany.setImageURI(imageUrl);
 
 

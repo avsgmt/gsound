@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
 
     private void doShowListView(ListView lv) {
         PostUtilClass postUtilClass = new PostUtilClass();
-        String jsondata=postUtilClass.doPost("0004",okHttpClient);
+        String jsondata=postUtilClass.doPost("12345",okHttpClient);
         if (jsondata != null) {
             ListViewModule listViewModule = new ListViewModule();
             listViewModule.showListView(lv,jsondata);

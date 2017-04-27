@@ -5,10 +5,9 @@ package com.shu.wyf.gmtsound;
  */
 
 class ItemInfo {
-    String ID;
-    String LogoUrl;
-    String CompanyLocation;
-    String CompanyName;
-    String CompanyTel;
-    String CompanyUrl;
+    String logo;
+    String address;
+    String name;
+    String tel;
+    String webset;
 }
