@@ -32,7 +32,7 @@ public class ParseFromJsonClass {
         }
     }
 */
-ArrayList<ItemInfo> datalist;
+    ArrayList<ItemInfo> datalist = null;
     public ArrayList<ItemInfo> parseItemInfo(String jsonData) {
         datalist = new ArrayList<>();
         try {
@@ -49,7 +49,7 @@ ArrayList<ItemInfo> datalist;
                 itemInfo.name = subObject.get("name").getAsString();
                 itemInfo.tel = subObject.get("tel").getAsString();
                 itemInfo.webset = subObject.get("webset").getAsString();
-                datalist.add(itemInfo);
+             //   datalist.add(itemInfo);
                 Log.d("Gson", subObject.get("logo").getAsString());
                 Log.d("Gson", subObject.get("address").getAsString());
                 Log.d("Gson", subObject.get("name").getAsString());

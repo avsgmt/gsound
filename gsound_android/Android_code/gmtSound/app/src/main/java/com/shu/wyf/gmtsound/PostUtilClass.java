@@ -1,4 +1,6 @@
 package com.shu.wyf.gmtsound;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 
 import java.io.IOException;
@@ -9,16 +11,30 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
+import com.google.gson.JsonObject;
+import com.shu.wyf.gmtsound.ListViewModule;
 
 /**
  * Created by info_kerwin on 2017/4/23.
  */
 
 public class PostUtilClass {
-    private static String jsondata = null;
 
-    public String doPost(final String data,final OkHttpClient okHttpClient) {
+    private String jsondata = null;
+    private Handler handler;
+    public PostUtilClass(Handler handler)
+    {
+        this.handler = handler;
+    }
+    public String getJsonString()
+    {
+        return jsondata;
+    }
+    public void clrJsonString()
+    {
+        jsondata = null;
+    }
+    public void doPost(final String data,final OkHttpClient okHttpClient) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -38,12 +54,17 @@ public class PostUtilClass {
                         public void onResponse(Call call, Response response) throws IOException {
                             jsondata = response.body().string();
                             Log.d("test", "jsondata"+jsondata);
+                            Message message=new Message();
+                            message.what=0x0001;
+                            handler.sendMessage(message);
+
                         }
 
                         @Override
                         public void onFailure(Call call, IOException e) {
-                            Log.d("test", "fail1" + postUrl);
-                            Log.e("err", "onFailure: ", e);
+                            Message message=new Message();
+                            message.what=0x0002;
+                            handler.sendMessage(message);
                         }
                     });
                 } catch (Exception e) {
@@ -53,6 +74,6 @@ public class PostUtilClass {
 
         }).start();
 
-        return jsondata;
+
     }
 }
