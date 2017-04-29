@@ -1,7 +1,8 @@
 package com.shu.wyf.gmtsound;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -9,10 +10,13 @@ import java.util.ArrayList;
 import okhttp3.OkHttpClient;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private static final OkHttpClient okHttpClient =new OkHttpClient();
     ListView listView = null;
+    TextView toolbar_title = null;
+    TextView tv_count = null;
     private ArrayList<ItemInfo> items = null;
     private ListViewModule madapter = null;
     private PostUtilClass postUtilClass = null;
@@ -23,6 +27,13 @@ public class MainActivity extends Activity {
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+        toolbar_title.setText("声讯");
+        setSupportActionBar(toolbar);
+
+        tv_count = (TextView) findViewById(R.id.tv_count);
         listView = (ListView) findViewById(R.id.listview_1);
         items = new ArrayList<ItemInfo>();
         madapter = new ListViewModule(items,MainActivity.this);
@@ -57,6 +68,9 @@ public class MainActivity extends Activity {
                 case 0x0001:
                     Log.d("wyf", "loading data form server finished!");
                     madapter.update(postUtilClass.getJsonString());
+                    toolbar_title.setText(madapter.getToolBarTitle());
+                    tv_count.setText("共计"+madapter.getTvCount()+"家企业");
+                    Log.d("wyf", "count: "+madapter.getTvCount());
                     postUtilClass.clrJsonString();
                     break;
                 case 0x0002:

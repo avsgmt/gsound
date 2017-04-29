@@ -15,7 +15,11 @@ import java.util.List;
  */
 
 public class ParseFromJsonClass {
-    private static String web_url=null;
+    private String toolBarTitle=null;
+
+    public String getToolBarTitle(){
+        return toolBarTitle;
+    }
 /*    public String parseFromJson(String jsonData) {
         Log.d("test", "1");
         try {
@@ -38,7 +42,9 @@ public class ParseFromJsonClass {
         try {
             JsonParser jsonParser = new JsonParser();
             JsonObject object = (JsonObject) jsonParser.parse(jsonData);
+            toolBarTitle =object.get("title").getAsString();
             Log.d("Gson", object.get("status").getAsString());
+            Log.d("Gson", object.get("title").getAsString());
             JsonArray array = object.get("data").getAsJsonArray();
             for (int i = 0; i < array.size(); i++) {
                 Log.d("Gson", "-----------------------");
@@ -66,5 +72,6 @@ public class ParseFromJsonClass {
         }
         return datalist;
     }
+
 
 }

@@ -11,8 +11,6 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import com.google.gson.JsonObject;
-import com.shu.wyf.gmtsound.ListViewModule;
 
 /**
  * Created by info_kerwin on 2017/4/23.
@@ -41,12 +39,11 @@ public class PostUtilClass {
                 final String postUrl = "http://cv15425558.imwork.net:2501/gsound/buildinfo?id="+data;
 //                final String postUrl = "http://123.206.206.42:8090/ShuVoice/GMT.php";
                 final FormBody formBody = new FormBody.Builder()
-                        .add("key", data)
+                        .add("mac", "abcdefg")
                         .build();
                 Request request = new Request.Builder().url(postUrl).build();
-//                Request request = new Request.Builder().url(postUrl).post(formBody).build();
+//                Request request = new Request.sBuilder().url(postUrl).post(formBody).build();
                 Log.d("test", postUrl);
-                Log.d("test", data);
                 try {
                     okHttpClient.newCall(request).enqueue(new Callback() {
 
