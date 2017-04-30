@@ -1,5 +1,6 @@
 package com.shu.wyf.gmtsound;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,7 @@ import android.os.Message;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private boolean flag_setview=false;
     private static final OkHttpClient okHttpClient =new OkHttpClient();
     ListView listView = null;
     TextView toolbar_title = null;
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.d("wyf", "onResume: start");
         try {
-            doShowListView();
+            new Task().execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     tv_count.setText("共计"+madapter.getTvCount()+"家企业");
                     Log.d("wyf", "count: "+madapter.getTvCount());
                     postUtilClass.clrJsonString();
+                    flag_setview = true;
                     break;
                 case 0x0002:
                     Log.d("wyf", "loading data form server failed!");
@@ -83,4 +86,32 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+    class Task extends AsyncTask<Void,Void,Void> {
+        CustomProgressDialog dialog;
+        @Override
+        protected void onPreExecute() {
+            dialog =new CustomProgressDialog(MainActivity.this, "正在加载中",R.drawable.frame);
+            dialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                doShowListView();
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                return null;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            if(flag_setview){
+                dialog.dismiss();
+                flag_setview=false;
+            }
+        }
+    }
 }
