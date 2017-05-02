@@ -64,7 +64,9 @@ public class MainActivity extends AppCompatActivity implements
         recognitionStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                /******************************************************/
                 mRecognition.start(TOKEN_LEN, mIsReadFromFile);
+                /******************************************************/
             }
         });
 
@@ -72,7 +74,9 @@ public class MainActivity extends AppCompatActivity implements
         recognitionStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                /******************************************************/
                 mRecognition.stop();
+                /******************************************************/
             }
         });
     }
