@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SinSoundingModule</string>
+    <string name="menu_settings">Settings</string>
+    <string name="info">SinVoiceDemo</string>
+    <string name="init_str">009_@aazAZ</string>
+    <string name="input_char">请输入数字、字母和_@</string>
+</resources>
