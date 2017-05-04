@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements
     static TextView tv_data;
     private char mRecgs[] = new char[100];
     private int mRecgCount;
+    private static String strReg = "";
 
     static {
         System.loadLibrary("sinvoice");
@@ -127,16 +128,17 @@ public class MainActivity extends AppCompatActivity implements
                             strs[i] = (byte)mAct.mRecgs[i];
                         }
                         try {
-                            String strReg = new String(strs, "UTF8");
-                            if (msg.arg1 >= 0) {
+                            strReg = new String(strs, "UTF8");
+                            if (msg.arg1 < 0) {
                                 Log.d(TAG, "reg ok!!!!!!!!!!!!");
                                 if (null != mAct) {
-                                    //       mAct.mRecognisedTextView.setText(strReg);
+                                    mAct.mRecognisedTextView.setText(strReg);
+                                    Log.d(TAG, strProcess(strReg));
                                     // mAct.mRegState.setText("reg ok(" + msg.arg1 + ")");
                                 }
                             } else {
                                 Log.d(TAG, "reg error!!!!!!!!!!!!!");
-                                mAct.mRecognisedTextView.setText(strReg);
+                            //    mAct.mRecognisedTextView.setText(strReg);
                             }
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
@@ -151,6 +153,15 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    private static String strProcess(String strReg) {
+        if(strReg.substring(0,2).equals("ab")&&strReg.substring(18,20).equals("ea")){
+            String buildinfo =strReg.substring(2,10);
+            String idStr =strReg.substring(10,18);
+            int id =Integer.parseInt(idStr, 16);
+            return id+"";
+        }else
+            return "wyf error";
+    }
     @Override
     public void onSinVoiceRecognitionStart() {
         mHanlder.sendEmptyMessage(MSG_RECG_START);
