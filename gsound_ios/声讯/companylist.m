@@ -14,11 +14,12 @@
 {
     if(self=[super init])
        {
-           self.Cname=dict[@"Cname"];
-           self.Caddress=dict[@"Caddress"];
-           self.Cphonenum=dict[@"Cphonenum"];
-           self.Cicon=dict[@"Cicon"];
-           self.Cwebsite=dict[@"Cwebsite"];
+           self.Cname=dict[@"name"];
+           self.Caddress=dict[@"address"];
+           self.Cphonenum=dict[@"tel"];
+           self.Cicon=dict[@"logo"];
+           self.Cwebsite=dict[@"webset"];
+           NSLog(@"%@",self.Cname);
        }
     return self;
 }

@@ -18,4 +18,5 @@
 
 @property (nonatomic,strong) companylist *company;
 +(id)COMPANYCELL;
+-(void)setCompany:(companylist *)company;
 @end

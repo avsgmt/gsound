@@ -8,6 +8,7 @@
 
 #import "companycell.h"
 #import "companylist.h"
+#import "UIImageView+WebCache.h"
 @implementation companycell
 
 +(id)COMPANYCELL
@@ -21,8 +22,7 @@
     _addresslabel.text=company.Caddress;
     _websitelabel.text=company.Cwebsite;
     _phonenumlabel.text=company.Cphonenum;
-    _iconview.image=[UIImage imageNamed:company.Cicon];
-
+    [self.iconview sd_setImageWithURL:[NSURL URLWithString:company.Cicon]];
 }
 -(IBAction)dialnumber:(id)sender
 {

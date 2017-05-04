@@ -10,7 +10,7 @@
 
 @interface ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *showCnumber;
-
+@property (weak,nonatomic) IBOutlet UITableView *mytable;
 
 @end
 
