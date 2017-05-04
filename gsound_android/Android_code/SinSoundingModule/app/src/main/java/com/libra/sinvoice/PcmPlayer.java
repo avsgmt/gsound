@@ -62,7 +62,7 @@ public class PcmPlayer {
     }
 
     public PcmPlayer(Callback callback, int sampleRate, int channel,
-            int format, int bufferSize) {
+                     int format, int bufferSize) {
         mSampleRate = sampleRate;
         mChannel = channel;
         mFormat = format;
@@ -77,7 +77,7 @@ public class PcmPlayer {
     }
 
     public void start() {
-        LogHelper.d(TAG, "start");
+        LogHelper.d(TAG, "------------------------------------------start");
         if (STATE_STOP == mState ) {
             mStarted = false;
 
@@ -116,7 +116,9 @@ public class PcmPlayer {
 
                             if (!mStarted) {
                                 mStarted = true;
+                                /***************/
                                 mAudio.play();
+                                /***************/
                             }
                             start = System.currentTimeMillis();
                             mCallback.freePlayData(data);

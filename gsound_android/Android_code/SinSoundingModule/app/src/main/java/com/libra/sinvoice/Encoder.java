@@ -98,7 +98,7 @@ public class Encoder implements VoiceEncoder.Callback {
     }
 
     public void start(int sampleRate, int bufferSize, int[] tokens, int tokenLen, int muteInterval, boolean repeat) {
-        LogHelper.d(TAG, "start");
+        LogHelper.d(TAG, "************************************start");
 
         if ( STATE_STOPED == mState ) {
             mState = STATE_START;
@@ -123,10 +123,12 @@ public class Encoder implements VoiceEncoder.Callback {
             }
 
             do {
-                LogHelper.d(TAG, "encode start");
+                LogHelper.d(TAG, "**************************************encode start");
+                /****************************************/
                 encode(tokens, tokenLen, muteInterval, needRepeat);
+                /****************************************/
                 needRepeat = repeat;
-                LogHelper.d(TAG, "encode end");
+                LogHelper.d(TAG, "**************************************encode end");
             } while (repeat && (STATE_START == mState));
             stop();
             mVoiceEncoder.stopSV();
@@ -158,8 +160,10 @@ public class Encoder implements VoiceEncoder.Callback {
             for ( int i = 0; i < tokenLen; ++i ) {
                 LogHelper.d("jichengtoken", "send i" + i + "  token:" + tokens[i]);
             }
+            /****************************************/
+            /*超过十次则不再generate，但是还是能够一直重复的，权限未放开*/
             mVoiceEncoder.genRate(tokens, tokenLen);
-
+            /****************************************/
             // for mute
             if ( muteInterval > 0 ) {
                 int interval = 0;

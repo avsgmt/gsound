@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements SinVoicePlayer.Li
             @Override
             public void onClick(View arg0) {
                 /**********************************************************************************/
+          //      for (int j = 0; j <10; j++) {
                 try {
                     byte[] strs = mPlayTextView.getText().toString().getBytes("UTF8");
                     if ( null != strs ) {
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements SinVoicePlayer.Li
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
+       //         }
                 /**********************************************************************************/
             }
         });
