@@ -11,7 +11,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "272F684BDB48C12FB82F63EFB90FF2436BBA2473" : "SDWebImage\/Vendors\/libwebp\/",
     "CADC4D1B031AED4FEFB66A1DCF54AE5FF592E1F0" : "SDWebImage\/Vendors\/FLAnimatedImage\/",
-    "E28E36D423EC87798E52E2BF482E9F7A1E6479D6" : "SDWebImage\/"
+    "E28E36D423EC87798E52E2BF482E9F7A1E6479D6" : "..\/SDWebImage"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "声讯",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

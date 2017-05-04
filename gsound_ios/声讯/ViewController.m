@@ -22,11 +22,11 @@
     self._allcompanys=[NSMutableArray array];
     [self loadcompany];
     double delayInSeconds = 0.8;
-    __block ViewController* bself = self;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
     _showCnumber.text=[NSString stringWithFormat:@"共计%lu家企业",(unsigned long)self._allcompanys.count];
     });
+    [self setupRefresh];
 }
 
 -(void)loadcompany{
@@ -71,6 +71,19 @@
     return cell;
 }
 
+-(void)setupRefresh
+{
+    UIRefreshControl *control=[[UIRefreshControl alloc]init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [self.mytable addSubview:control];
+    [control beginRefreshing];
+    [self refreshStateChange:control];
+}
 
+-(void)refreshStateChange:(UIRefreshControl *)control
+{
+        [self.mytable reloadData];
+        [control endRefreshing];
+}
 
 @end
