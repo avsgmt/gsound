@@ -20,25 +20,23 @@ public class PostUtilClass {
 
     private String jsondata = null;
     private Handler handler;
-    public PostUtilClass(Handler handler)
-    {
+    public PostUtilClass(Handler handler) {
         this.handler = handler;
     }
-    public String getJsonString()
-    {
+    public String getJsonString() {
         return jsondata;
     }
-    public void clrJsonString()
-    {
+    public void clrJsonString() {
         jsondata = null;
     }
+
     public void doPost(final String data,final OkHttpClient okHttpClient) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 final String postUrl = "http://cv15425558.imwork.net:2501/gsound/buildinfo?id="+data;
-//                final String postUrl = "http://123.206.206.42:8090/ShuVoice/GMT.php";
                 final FormBody formBody = new FormBody.Builder()
+                        //// TODO: 2017/5/5  add the user check
                         .add("mac", "abcdefg")
                         .build();
                 Request request = new Request.Builder().url(postUrl).build();
@@ -54,7 +52,6 @@ public class PostUtilClass {
                             Message message=new Message();
                             message.what=0x0001;
                             handler.sendMessage(message);
-
                         }
 
                         @Override
@@ -70,7 +67,5 @@ public class PostUtilClass {
             }
 
         }).start();
-
-
     }
 }

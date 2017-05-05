@@ -99,7 +99,6 @@ public class ListViewModule extends BaseAdapter {
     }
    public void update(String jsondata){
        try {
-
            items.clear();
            JsonParser jsonParser = new JsonParser();
            JsonObject object = (JsonObject) jsonParser.parse(jsondata);
@@ -118,7 +117,7 @@ public class ListViewModule extends BaseAdapter {
                itemInfo.name = subObject.get("name").getAsString();
                itemInfo.tel = subObject.get("tel").getAsString();
                itemInfo.webset = subObject.get("webset").getAsString();
-               //   datalist.add(itemInfo);
+
                Log.d("Gson", subObject.get("logo").getAsString());
                Log.d("Gson", subObject.get("address").getAsString());
                Log.d("Gson", subObject.get("name").getAsString());
@@ -127,11 +126,8 @@ public class ListViewModule extends BaseAdapter {
 
                add(itemInfo);
            }
-
        } catch (JsonSyntaxException e) {
            e.printStackTrace();
        }
-
    }
-
 }
