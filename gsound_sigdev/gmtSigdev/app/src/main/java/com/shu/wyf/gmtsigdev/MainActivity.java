@@ -1,9 +1,14 @@
 package com.shu.wyf.gmtsigdev;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -13,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.libra.sinvoice.Common;
 import com.libra.sinvoice.LogHelper;
@@ -32,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements SinVoicePlayer.Li
 
     private final static int[] TOKENS = { 32, 32, 32, 32, 32, 32 };
     private final static int TOKEN_LEN = TOKENS.length;
+    private static final int REQUEST_STORAGE_PERMISSION=10;
 
     private SinVoicePlayer mSinVoicePlayer;
     private PowerManager.WakeLock mWakeLock;
@@ -50,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements SinVoicePlayer.Li
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
 
+        requestPermission();
         mSinVoicePlayer = new SinVoicePlayer();
         mSinVoicePlayer.init(this);
         mSinVoicePlayer.setListener(this);
@@ -124,6 +132,23 @@ public class MainActivity extends AppCompatActivity implements SinVoicePlayer.Li
         mSinVoicePlayer.uninit();
     }
 
+    private void requestPermission(){
+        //判断系统版本
+        if (Build.VERSION.SDK_INT >= 23) {
+            //检测当前app是否拥有某个权限
+            int checkPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            //判断这个权限是否已经授权过
+            if(checkPermission != PackageManager.PERMISSION_GRANTED){
+                //判断是否需要 向用户解释，为什么要申请该权限
+                if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE))
+                    Toast.makeText(this,"Need Storage permission.",Toast.LENGTH_SHORT).show();
+                ActivityCompat.requestPermissions(this ,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO},REQUEST_STORAGE_PERMISSION);
+                return;
+            }else{
+            }
+        } else {
+        }
+    }
     @Override
     public void onSinVoicePlayStart() {
         LogHelper.d(TAG, "start play");
