@@ -9,11 +9,19 @@ extern "C" {
 #endif
 /*
  * Class:     com_shu_wyf_jnigsound_MainActivity
- * Method:    renderChirpData
- * Signature: ()V
+ * Method:    renderChirpData1
+ * Signature: ([C)V
  */
-JNIEXPORT void JNICALL Java_com_shu_wyf_jnigsound_MainActivity_renderChirpData
-  (JNIEnv *, jobject);
+JNIEXPORT void JNICALL Java_com_shu_wyf_jnigsound_MainActivity_renderChirpData1
+  (JNIEnv *env, jobject instance ,jcharArray chararray);
+
+/*
+ * Class:     com_shu_wyf_jnigsound_MainActivity
+ * Method:    renderChirpData2
+ * Signature: ([C)V
+ */
+JNIEXPORT void JNICALL Java_com_shu_wyf_jnigsound_MainActivity_renderChirpData2
+  (JNIEnv *env, jobject instance ,jcharArray chararray);
 
 #ifdef __cplusplus
 }

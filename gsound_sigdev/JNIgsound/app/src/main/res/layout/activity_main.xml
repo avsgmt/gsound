@@ -21,8 +21,13 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_play"
-        android:text="发声"
+        android:id="@+id/btn_play1"
+        android:text="123456"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_play2"
+        android:text="654321"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Button

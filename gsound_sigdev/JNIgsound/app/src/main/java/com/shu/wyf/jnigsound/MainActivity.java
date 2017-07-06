@@ -3,7 +3,6 @@ package com.shu.wyf.jnigsound;
 import android.app.Activity;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -15,19 +14,19 @@ import java.io.IOException;
 
 public class MainActivity extends Activity {
 
-    //private final String file="//sdcard//audio.wav";
-    private static final String DEFAULT_TEST_FILE = Environment.getExternalStorageDirectory() + "/audio.wav";
+    private static final String DEFAULT_TEST_FILE1 = Environment.getExternalStorageDirectory() + "/audio1.wav";
+    private static final String DEFAULT_TEST_FILE2 = Environment.getExternalStorageDirectory() + "/audio2.wav";
 
-    private AudioPlayer mAudioPlayer;
-    private WavFileReader mWavFileReader;
-    private SoundPool soundPool;
 
-    private volatile boolean mIsTestingExit = false;
     private Button btn_test;
-    private Button btn_play;
+    private Button btn_play1;
+    private Button btn_play2;
     private Button btn_stop;
+    private char[] chararray1={'h', 'j', 'a', 'i', 'a', 'm', 'o', '2', 'k', '4', 'j', '8', '9', 'r', 'i', 'a', 'i', 'h', '8', 'd'};
+    private char[] chararray2={'h', 'j', 'd', 'c', 'h', 'i', '2', 't', '9', 'b', 'h', 'i', 'g', 'p', 'd', 'f', 'i', 'g', 's', 'j'};
 
-    public native void renderChirpData();
+    public native void renderChirpData1(char[] chararray);
+    public native void renderChirpData2(char[] chararray);
     static{
         System.loadLibrary("PCMRender");
     }
@@ -36,16 +35,17 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAudioPlayer = new AudioPlayer();
 
-        Log.d("wyf", "默认保存了路径: "+DEFAULT_TEST_FILE);
+        Log.d("wyf", "默认保存了路径: "+DEFAULT_TEST_FILE1);
+        Log.d("wyf", "默认保存了路径: "+DEFAULT_TEST_FILE2);
         btn_test = (Button) findViewById(R.id.btn_test);
         btn_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("wyf", "*********1********");
                 try {
-                    MainActivity.this.renderChirpData();
+                    MainActivity.this.renderChirpData1(chararray1);
+                    MainActivity.this.renderChirpData2(chararray2);
                     Log.d("wyf", "*********2********");
                 } catch (RuntimeException e) {
                     Log.d("wyf", "*********3********");
@@ -54,69 +54,37 @@ public class MainActivity extends Activity {
             }
         });
 
-        btn_play= (Button) findViewById(R.id.btn_play);
-        btn_play.setOnClickListener(new View.OnClickListener() {
+        btn_play1= (Button) findViewById(R.id.btn_play1);
+        btn_play1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mIsTestingExit = false;
-                SoundPool();
-             //   MainActivity.this.startTesting();
+                SoundPool(DEFAULT_TEST_FILE1);
+            }
+        });
+        btn_play2= (Button) findViewById(R.id.btn_play2);
+        btn_play2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SoundPool(DEFAULT_TEST_FILE2);
             }
         });
         btn_stop= (Button) findViewById(R.id.btn_stop);
         btn_stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mIsTestingExit = true;
+
             }
         });
     }
-    void startTesting() {
 
-        mWavFileReader = new WavFileReader();
-        mAudioPlayer = new AudioPlayer();
 
-        try {
-            mWavFileReader.openFile(DEFAULT_TEST_FILE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        mAudioPlayer.startPlayer();
-
-        new Thread(AudioPlayRunnable).start();
-    }
-
-    private Runnable AudioPlayRunnable = new Runnable() {
-        @Override
-        public void run() {
-            byte[] buffer = new byte[mAudioPlayer.getMinBufferSize()];
-            while (!mIsTestingExit && mWavFileReader.readData(buffer, 0, buffer.length) > 0) {
-                mAudioPlayer.play(buffer, 0, buffer.length);
-            }
-            mAudioPlayer.stopPlayer();
-            try {
-                mWavFileReader.closeFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    };
-
-    private void SoundPool(){
-
-//        soundPool= new SoundPool(10, AudioManager.STREAM_SYSTEM,5);
-//        soundPool.load(this,R.raw.audio,1);
-//        soundPool.play(1,1, 1, 0, 0, 1);
-//        MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.audio);
-//        mediaPlayer.start();
+    private void SoundPool(String filePath){
 
         MediaPlayer mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//        mediaPlayer.setDataSource(getApplicationContext(),);
 
         try {
-            mediaPlayer.setDataSource(DEFAULT_TEST_FILE);
+            mediaPlayer.setDataSource(filePath);
             mediaPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();
