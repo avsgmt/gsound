@@ -456,8 +456,8 @@
 				TargetAttributes = {
 					276D8CCD1EDC523E00F2E275 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = VUM8MX78UM;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = U8UL2UV53L;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {
 								enabled = 1;
@@ -658,7 +658,7 @@
 				CODE_SIGN_ENTITLEMENTS = gsd/gsd.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = VUM8MX78UM;
+				DEVELOPMENT_TEAM = U8UL2UV53L;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = gsd/Info.plist;
@@ -669,8 +669,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.avsgm.gsd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "afc7d556-3fa7-42f9-83fb-40582305dbed";
+				PROVISIONING_PROFILE_SPECIFIER = gmtios;
 			};
 			name = Debug;
 		};
@@ -685,7 +685,7 @@
 				CODE_SIGN_ENTITLEMENTS = gsd/gsd.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = VUM8MX78UM;
+				DEVELOPMENT_TEAM = U8UL2UV53L;
 				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
 				INFOPLIST_FILE = gsd/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -695,8 +695,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.avsgm.gsd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "afc7d556-3fa7-42f9-83fb-40582305dbed";
+				PROVISIONING_PROFILE_SPECIFIER = gmtios;
 			};
 			name = Release;
 		};

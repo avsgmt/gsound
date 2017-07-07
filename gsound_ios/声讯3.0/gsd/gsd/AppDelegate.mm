@@ -949,16 +949,16 @@ static queue   _savedBuffer[32];
              //self.window.rootViewController.
                   path = @"http://cv15425558.imwork.net:2501/gsound/buildinfo?id=12345";
              
-             }else if(   final_result[2]==2   && final_result[3]==21  && final_result[4]==4   && final_result[5]==8
-                      && final_result[6]==0   && final_result[7]==25  && final_result[8]==14  && final_result[9]==10
-                      && final_result[10]== 3 && final_result[11]==2  && final_result[12]==26 && final_result[13]==9
-                      && final_result[14]==13 && final_result[15]==1  && final_result[16]==21 && final_result[17]==28
-                      && final_result[18]==24  && final_result[19]==12){
+             }else if(   final_result[2]==13   && final_result[3]==12  && final_result[4]==17   && final_result[5]==18
+                      && final_result[6]==2   && final_result[7]==29  && final_result[8]==9  && final_result[9]==11
+                      && final_result[10]==17  && final_result[11]==18  && final_result[12]==16 && final_result[13]==25
+                      && final_result[14]==13 && final_result[15]==15  && final_result[16]==18 && final_result[17]==16
+                      && final_result[18]==28  && final_result[19]==19){
              //self.window.rootViewController
                   path = @"http://cv15425558.imwork.net:2501/gsound/buildinfo?id=54321";
-             }else{
+             }/*else{
                   _isListenning = YES;
-             }
+             }*/
             
              UIViewController * currVC = nil;
              UIViewController * Rootvc = self.window.rootViewController ;
