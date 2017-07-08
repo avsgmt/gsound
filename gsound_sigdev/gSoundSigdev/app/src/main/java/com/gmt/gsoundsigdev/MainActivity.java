@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 
     private Button btn_play1;
     private Button btn_play2;
+    private Button btn_encode;
     private char[] chararray1={'h', 'j', 'a', 'i', 'a', 'm', 'o', '2', 'k', '4', 'j', '8', '9', 'r', 'i', 'a', 'i', 'h', '8', 'd'};
     private char[] chararray2={'h', 'j', 'd', 'c', 'h', 'i', '2', 't', '9', 'b', 'h', 'i', 'g', 'p', 'd', 'f', 'i', 'g', 's', 'j'};
 
@@ -33,13 +34,12 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_ad);
 
         Log.d("wyf", "默认保存了路径: "+DEFAULT_TEST_FILE1);
         Log.d("wyf", "默认保存了路径: "+DEFAULT_TEST_FILE2);
-
-        btn_play1= (Button) findViewById(R.id.btn_play1);
-        btn_play1.setOnClickListener(new View.OnClickListener() {
+        btn_encode = (Button) findViewById(R.id.btn_encode);
+        btn_encode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("wyf", "*********1********");
@@ -50,13 +50,6 @@ public class MainActivity extends Activity {
                     Log.d("wyf", "*********3********");
                     e.printStackTrace();
                 }
-                SoundPool(DEFAULT_TEST_FILE1);
-            }
-        });
-        btn_play2= (Button) findViewById(R.id.btn_play2);
-        btn_play2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 Log.d("wyf", "*********1********");
                 try {
                     MainActivity.this.renderChirpData2(chararray2);
@@ -65,6 +58,21 @@ public class MainActivity extends Activity {
                     Log.d("wyf", "*********3********");
                     e.printStackTrace();
                 }
+            }
+        });
+        btn_play1= (Button) findViewById(R.id.btn_play1);
+        btn_play1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SoundPool(DEFAULT_TEST_FILE1);
+            }
+        });
+        btn_play2= (Button) findViewById(R.id.btn_play2);
+        btn_play2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 SoundPool(DEFAULT_TEST_FILE2);
             }
         });
