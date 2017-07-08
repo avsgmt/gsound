@@ -38,7 +38,7 @@
 		BE5035B91F0CD26A00EB6AA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE5035B81F0CD26A00EB6AA5 /* Main.storyboard */; };
 		BE5E81DC1F0E00B600CFB2E6 /* StartImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BE5E81DB1F0E00B600CFB2E6 /* StartImage.png */; };
 		BE5E81DF1F0E14BF00CFB2E6 /* companycell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5E81DE1F0E14BF00CFB2E6 /* companycell.xib */; };
-		BE5E81E21F0E1EAF00CFB2E6 /* __.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE5E81E01F0E1EAF00CFB2E6 /* __.xcdatamodeld */; };
+		BE5E81E21F0E1EAF00CFB2E6 /* __.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE5E81E01F0E1EAF00CFB2E6 /* __.xcdatamodeld */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		BE969C751F0F316500C86540 /* top_gb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BE969C741F0F316500C86540 /* top_gb@2x.png */; };
 		BE969C771F0F338500C86540 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = BE969C761F0F338500C86540 /* top.png */; };
 		BEA911C91F0CB2580006A2F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEA911C81F0CB2580006A2F7 /* LaunchScreen.storyboard */; };

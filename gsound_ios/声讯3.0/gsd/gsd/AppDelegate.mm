@@ -942,23 +942,25 @@ static queue   _savedBuffer[32];
             //绑定音频数据到URL
              NSString* path;
              if(   final_result[2]==10  && final_result[3]==18  && final_result[4]==10  && final_result[5]==22
-                && final_result[6]==24  && final_result[7]==02  && final_result[8]==20  && final_result[9]== 4
-                && final_result[10]==19 && final_result[11]== 8 && final_result[12]== 9 && final_result[13]==27
+                && final_result[6]==24  && final_result[7]==02  && final_result[8]==20  && final_result[9]==4
+                /*&& final_result[10]==19 && final_result[11]== 8 && final_result[12]== 9 && final_result[13]==27
                 && final_result[14]==18 && final_result[15]==10 && final_result[16]==18 && final_result[17]==17
-                && final_result[18]==8  && final_result[19]==13){
+                && final_result[18]==8  && final_result[19]==13*/){
              //self.window.rootViewController.
                   path = @"http://cv15425558.imwork.net:2501/gsound/buildinfo?id=12345";
              
              }else if(   final_result[2]==13   && final_result[3]==12  && final_result[4]==17   && final_result[5]==18
                       && final_result[6]==2   && final_result[7]==29  && final_result[8]==9  && final_result[9]==11
-                      && final_result[10]==17  && final_result[11]==18  && final_result[12]==16 && final_result[13]==25
+                     /* && final_result[10]==17  && final_result[11]==18  && final_result[12]==16 && final_result[13]==25
                       && final_result[14]==13 && final_result[15]==15  && final_result[16]==18 && final_result[17]==16
-                      && final_result[18]==28  && final_result[19]==19){
+                      && final_result[18]==28  && final_result[19]==19*/){
              //self.window.rootViewController
                   path = @"http://cv15425558.imwork.net:2501/gsound/buildinfo?id=54321";
-             }/*else{
-                  _isListenning = YES;
-             }*/
+             }else{
+                 
+                 path = nil;//@"http://cv15425558.imwork.net:2501/gsound/buildinfo?id=12345";
+                 _isListenning = YES;
+             }
             
              UIViewController * currVC = nil;
              UIViewController * Rootvc = self.window.rootViewController ;
