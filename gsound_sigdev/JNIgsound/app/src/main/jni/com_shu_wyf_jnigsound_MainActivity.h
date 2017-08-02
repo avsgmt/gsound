@@ -13,7 +13,7 @@ extern "C" {
  * Signature: ([C)V
  */
 JNIEXPORT void JNICALL Java_com_shu_wyf_jnigsound_MainActivity_renderChirpData1
-  (JNIEnv *env, jobject instance ,jcharArray chararray);
+  (JNIEnv *env, jobject instance , jcharArray chararray);
 
 /*
  * Class:     com_shu_wyf_jnigsound_MainActivity
@@ -21,7 +21,23 @@ JNIEXPORT void JNICALL Java_com_shu_wyf_jnigsound_MainActivity_renderChirpData1
  * Signature: ([C)V
  */
 JNIEXPORT void JNICALL Java_com_shu_wyf_jnigsound_MainActivity_renderChirpData2
-  (JNIEnv *env, jobject instance ,jcharArray chararray);
+  (JNIEnv *env, jobject instance , jcharArray chararray);
+
+/*
+ * Class:     com_shu_wyf_jnigsound_MainActivity
+ * Method:    renderChirpData3
+ * Signature: ([C)V
+ */
+JNIEXPORT void JNICALL Java_com_shu_wyf_jnigsound_MainActivity_renderChirpData3
+  (JNIEnv *env, jobject instance , jcharArray chararray);
+
+/*
+ * Class:     com_shu_wyf_jnigsound_MainActivity
+ * Method:    renderChirpData4
+ * Signature: ([C)V
+ */
+JNIEXPORT void JNICALL Java_com_shu_wyf_jnigsound_MainActivity_renderChirpData4
+  (JNIEnv *env, jobject instance , jcharArray chararray);
 
 #ifdef __cplusplus
 }

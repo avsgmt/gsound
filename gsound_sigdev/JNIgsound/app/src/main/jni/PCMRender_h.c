@@ -5,7 +5,7 @@
 //  Created by 王逸凡 on 2017/5/9.
 //  Copyright © 2017年 wyf. All rights reserved.
 //
-#include "PCMRender.h"
+#include "PCMRender_h.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -54,7 +54,7 @@ typedef struct     {
 }DATA;
 
 
-int addWAVHeader(unsigned char *buffer, int sample_rate, int bytesPerSample, int channels,UInt32 dataByteSize)
+int addWAVHeader_h(unsigned char *buffer, int sample_rate, int bytesPerSample, int channels,UInt32 dataByteSize)
 {
     //以下是为了建立.wav头而准备的变量
     HEADER   pcmHEADER;
@@ -100,7 +100,7 @@ int addWAVHeader(unsigned char *buffer, int sample_rate, int bytesPerSample, int
 }
 
 static int freq_init_flag = 0;
-static int freq_init_is_high = 0;
+static int freq_init_is_high = 1;
 
 //频率初始化，如果已经初始化过了，则不再初始化。
 static void freq_init() {
@@ -188,7 +188,7 @@ static int char_to_num(char c, UInt32 *n) {
 }
 
 //字符到频率
-int char_to_freq(char c, UInt32 *f) {
+int char_to_freq_h(char c, UInt32 *f) {
     
     unsigned int n;
     
@@ -209,7 +209,7 @@ int char_to_freq(char c, UInt32 *f) {
  比如在我们的例子中，采用了椭圆形窗对声波进行了音量上的优化。
  buffer为缓冲区即data、bufferLength为缓冲区长度、freqArray为频率数组、freqArrayLength为频率数组的长度、
  duration_secs为帧长，即采样时间、sample_rate为采样率、bits_persample为采样位宽、channels为通道数*/
-void makeChirp(Float32 buffer[],UInt32 freqArray[], int freqArrayLength, double duration_secs,int sample_rate, int channels) {
+void makeChirp_h(Float32 buffer[],UInt32 freqArray[], int freqArrayLength, double duration_secs,int sample_rate, int channels) {
     
     double theta = 0;
     int idx = 0;
