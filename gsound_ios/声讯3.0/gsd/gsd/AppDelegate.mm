@@ -767,7 +767,8 @@ static queue   _savedBuffer[32];
         
         enqueue(&_savedBuffer[code], interpVal);
         
-        //NSLog(@"%d", code);
+//        printf("****************%d*********\n", code);
+//        NSLog(@"****************%d*********", code);
     }
 }
 - (void)helperResultWithTimeSlice:(int)length {
@@ -1076,6 +1077,8 @@ static queue   _savedBuffer[32];
                 fft_r = (fftData[(int)fftIdx_i + 1] & 0xFF000000) >> 24;
                 fft_l_fl = (CGFloat)(fft_l + 80) / 64.;
                 fft_r_fl = (CGFloat)(fft_r + 80) / 64.;
+                printf("fft_l_fl=%f , fft_r_fl=%f ,fftIdx_i=%d",fft_l_fl,fft_r_fl,(int)fftIdx_i);
+                
                 interpVal = fft_l_fl * (1. - fftIdx_f) + fft_r_fl * fftIdx_f;
                 
                 interpVal = sqrt(CLAMP(0., interpVal, 1.));
